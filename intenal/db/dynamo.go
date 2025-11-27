@@ -6,6 +6,7 @@ import (
 	"strconv"
 	"time"
 
+	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/config"
 	"github.com/aws/aws-sdk-go-v2/service/dynamodb"
 	"github.com/aws/aws-sdk-go-v2/service/dynamodb/types"
@@ -18,10 +19,24 @@ type DynamoDBBench struct {
 
 func NewDynamo(tableName string) (*DynamoDBBench, error) {
 	ctx := context.Background()
-	cfg, err := config.LoadDefaultConfig(ctx)
+
+	cfg, err := config.LoadDefaultConfig(ctx,
+		config.WithRegion("us-east-1"),
+		config.WithEndpointResolverWithOptions(
+			aws.EndpointResolverWithOptionsFunc(func(service, region string, options ...interface{}) (aws.Endpoint, error) {
+				if service == dynamodb.ServiceID {
+					return aws.Endpoint{
+						URL: "http://localhost:8000", // DynamoDB Local 🚀
+					}, nil
+				}
+				return aws.Endpoint{}, fmt.Errorf("unknown endpoint: %s", service)
+			}),
+		),
+	)
 	if err != nil {
 		return nil, err
 	}
+
 	client := dynamodb.NewFromConfig(cfg)
 	return &DynamoDBBench{Client: client, TableName: tableName}, nil
 }

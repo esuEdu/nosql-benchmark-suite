@@ -1,0 +1,9 @@
+{
+  "db": "mongo",
+  "ops": 1000,
+  "writes_duration_ms": 275,
+  "reads_duration_ms": 342,
+  "average_write_ms": 0.275,
+  "average_read_ms": 0.342,
+  "generated_at": "2025-11-27T07:20:05-03:00"
+}
