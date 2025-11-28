@@ -7,7 +7,6 @@ require (
 	github.com/aws/aws-sdk-go-v2 v1.40.0
 	github.com/aws/aws-sdk-go-v2/config v1.32.2
 	github.com/aws/aws-sdk-go-v2/service/dynamodb v1.53.2
-	github.com/google/uuid v1.6.0
 	github.com/redis/go-redis/v9 v9.17.1
 	go.mongodb.org/mongo-driver v1.17.6
 )

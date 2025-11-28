@@ -8,7 +8,6 @@ import (
 	"time"
 
 	"github.com/esuEdu/nosql-benchmark-suite/intenal/db"
-	"github.com/google/uuid"
 )
 
 func RunAndSave(b db.BenchmarkDB, ops int, resultsDir string) (*db.Result, error) {
@@ -36,7 +35,7 @@ func RunAndSave(b db.BenchmarkDB, ops int, resultsDir string) (*db.Result, error
 		return res, err
 	}
 
-	filename := fmt.Sprintf("%s_%s.json", b.Name(), uuid.New().String())
+	filename := fmt.Sprintf("%s_%d.json", b.Name(), ops)
 	fullpath := filepath.Join(resultsDir, filename)
 	f, err := os.Create(fullpath)
 	if err != nil {

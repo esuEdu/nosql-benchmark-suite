@@ -1,0 +1,9 @@
+{
+  "db": "cassandra",
+  "ops": 10000,
+  "writes_duration_ms": 22269,
+  "reads_duration_ms": 21684,
+  "average_write_ms": 2.2269,
+  "average_read_ms": 2.1684,
+  "generated_at": "2025-11-27T18:52:45-03:00"
+}

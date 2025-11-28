@@ -74,9 +74,7 @@ para artigos, estudos, testes práticos e pesquisa acadêmica.
 ### 1. Pré-requisitos
 
 -   Go 1.21+
--   EC2 (Amazon Linux 2023) ou máquina local
 -   Docker (opcional)
--   AWS CLI configurado (para o DynamoDB)
 
 ### Rodando os testes individualmente
 

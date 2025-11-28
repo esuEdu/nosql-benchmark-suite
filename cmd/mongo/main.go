@@ -10,7 +10,7 @@ import (
 )
 
 func main() {
-	ops := 1000
+	ops := 1000000
 	if v := os.Getenv("OPS"); v != "" {
 		if n, err := strconv.Atoi(v); err == nil {
 			ops = n

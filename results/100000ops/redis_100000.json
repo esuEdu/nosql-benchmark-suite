@@ -1,0 +1,9 @@
+{
+  "db": "redis",
+  "ops": 100000,
+  "writes_duration_ms": 17983,
+  "reads_duration_ms": 17384,
+  "average_write_ms": 0.17983,
+  "average_read_ms": 0.17384,
+  "generated_at": "2025-11-27T19:29:15-03:00"
+}

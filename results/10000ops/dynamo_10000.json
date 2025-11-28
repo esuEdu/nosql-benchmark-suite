@@ -1,0 +1,9 @@
+{
+  "db": "dynamo",
+  "ops": 10000,
+  "writes_duration_ms": 25152,
+  "reads_duration_ms": 5750,
+  "average_write_ms": 2.5152,
+  "average_read_ms": 0.575,
+  "generated_at": "2025-11-27T18:56:44-03:00"
+}

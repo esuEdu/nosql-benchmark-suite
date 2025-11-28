@@ -11,13 +11,13 @@ import (
 )
 
 func main() {
-	ops := 1000
+	ops := 50000
 	if v := os.Getenv("OPS"); v != "" {
 		if n, err := strconv.Atoi(v); err == nil {
 			ops = n
 		}
 	}
-	resultsDir := getEnv("RESULTS_DIR", "results/ec2")
+	resultsDir := getEnv("RESULTS_DIR", "results/test")
 
 	// Mongo
 	if true {
@@ -46,16 +46,14 @@ func main() {
 	}
 
 	// Dynamo (only if configured)
-	if getEnv("DYNAMO_TABLE", "") != "" {
-		if ddb, err := db.NewDynamo(getEnv("DYNAMO_TABLE", "BenchTable")); err == nil {
-			if res, err := benchmark.RunAndSave(ddb, ops, resultsDir); err == nil {
-				fmt.Println("dynamo:", res)
-			} else {
-				fmt.Println("dynamo run err:", err)
-			}
+	if ddb, err := db.NewDynamo(getEnv("DYNAMO_TABLE", "BenchTable")); err == nil {
+		if res, err := benchmark.RunAndSave(ddb, ops, resultsDir); err == nil {
+			fmt.Println("dynamo:", res)
 		} else {
-			fmt.Println("dynamo conn err:", err)
+			fmt.Println("dynamo run err:", err)
 		}
+	} else {
+		fmt.Println("dynamo conn err:", err)
 	}
 
 	// Cassandra
